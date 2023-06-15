@@ -23,8 +23,8 @@ services:
         networks:
             - sail
         depends_on:
-            - mysql
-    mysql:
+            - db
+    db:
         image: 'mysql/mysql-server:8.0'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
@@ -48,6 +48,18 @@ services:
                 - '-p${DB_PASSWORD}'
             retries: 3
             timeout: 5s
+    # other services
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        restart: always
+        ports:
+            - 8080:80
+        environment:
+            PMA_HOST: db
+        depends_on:
+        - db
+        networks:
+            - sail
 networks:
     sail:
         driver: bridge

@@ -4,62 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\Idea;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IdeaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $ideas = Idea::all();
+        return view('ideas.index', compact('ideas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('ideas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-    }
+        $idea = new Idea();
+        $idea->user_id = 1; //ログイン機能実装まで仮に値を設定
+        $idea->main_category = $request->input('main_category');
+        $idea->style = $request->input('style');
+        $idea->keywords = $request->input('keywords');
+        $idea->save();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Idea $idea)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Idea $idea)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Idea $idea)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Idea $idea)
-    {
-        //
+        return redirect('/ideas');
     }
 }

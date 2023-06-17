@@ -10,9 +10,15 @@
 
 <body>
     <h1>TOPページです</h1>
+    <div><a href="/ideas/create">命名を開始する</a></div>
+    @if (session('message'))
+    <p class="alert alert-success">
+        {{ session('message') }}
+    </p>
+    @endif
     <ul>
         @foreach ($ideas as $idea)
-        <li><a href="">番号:{{$idea["id"]}},メインカテゴリー:{{$idea["main_category"]}}</a></li>
+        <li><a href="/ideas/edit/{{$idea['id']}}">番号:{{$idea["id"]}},メインカテゴリー:{{$idea["main_category"]}}</a></li>
         @endforeach
     </ul>
 </body>

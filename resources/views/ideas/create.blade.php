@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOPページ</title>
+    <title>作成ページ</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
         <input type="text" id="style" name="style">
 
         <label for="key_word">キーワード:</label>
-        <input type="text" id="key_word" name="key_word">
+        <input type="text" id="key_word" name="keywords">
         <input type="submit">
     </form>
 </body>

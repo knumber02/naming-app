@@ -23,11 +23,27 @@ class IdeaController extends Controller
     {
         $idea = new Idea();
         $idea->user_id = 1; //ログイン機能実装まで仮に値を設定
-        $idea->main_category = $request->input('main_category');
-        $idea->style = $request->input('style');
-        $idea->keywords = $request->input('keywords');
+        $idea->fill($request->all());
         $idea->save();
 
-        return redirect('/ideas');
+        return redirect('/ideas/' . $idea->id . '/edit');
+    }
+    public function edit(Idea $idea)
+    {
+        return view('ideas.edit', ['idea' => $idea]);
+    }
+
+    public function update(Request $request, Idea $idea)
+    {
+        $idea->fill($request->all());
+        $idea->save();
+
+        return redirect('/ideas/' . $idea->id . '/edit')->with('message', '更新が完了しました');
+    }
+
+    public function destroy(Idea $idea)
+    {
+        $idea->delete();
+        return redirect('/ideas')->with('message', '削除が完了しました');
     }
 }

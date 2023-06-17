@@ -9,5 +9,5 @@ class Idea extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'category', 'style', 'keywords'];
+    protected $fillable = ['user_id', 'main_category', 'style', 'keywords'];
 }

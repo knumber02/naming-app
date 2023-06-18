@@ -18,7 +18,7 @@
     @endif
     <ul>
         @foreach ($ideas as $idea)
-        <li><a href="/ideas/edit/{{$idea['id']}}">番号:{{$idea["id"]}},メインカテゴリー:{{$idea["main_category"]}}</a></li>
+        <li><a href="/ideas/{{$idea['id']}}/edit">番号:{{$idea["id"]}},メインカテゴリー:{{$idea["main_category"]}}</a></li>
         @endforeach
     </ul>
 </body>

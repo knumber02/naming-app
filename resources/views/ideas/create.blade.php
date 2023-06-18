@@ -11,6 +11,16 @@
 <body>
     <h1>命名したいものを作成</h1>
     <h2>命名したいものを選択・入力してください。</h2>
+
+    @if (count($errors))
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <form method="POST" action="/ideas">
         @csrf
         <label for="main_category">メインカテゴリー:</label>

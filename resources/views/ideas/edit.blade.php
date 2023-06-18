@@ -23,7 +23,15 @@
         {{ session('message') }}
     </p>
     @endif
-
+    @if (count($errors))
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <form method="POST" action="/ideas/{{ $idea->id }}">
         @csrf
         @method('PUT')

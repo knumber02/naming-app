@@ -11,7 +11,7 @@
 <body>
     <h1>命名したいものを作成</h1>
     <h2>命名したいものを選択・入力してください。</h2>
-
+    <div><a href="{{ route('ideas.index') }}">TOPページに戻る</a></div>
     @if (count($errors))
     <div class="alert alert-danger">
         <ul>
@@ -21,7 +21,7 @@
         </ul>
     </div>
     @endif
-    <form method="POST" action="/ideas">
+    <form method="POST" action="{{ route('ideas.store') }}">
         @csrf
         <label for="main_category">メインカテゴリー:</label>
         <input type="text" id="main_category" name="main_category">

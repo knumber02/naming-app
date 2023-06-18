@@ -11,8 +11,8 @@
 <body>
     <h1>命名したいものを作成</h1>
     <h2>命名したいものを選択・入力してください。</h2>
-    <div><a href="/ideas">TOPページに戻る</a></div>
-    <form method="POST" action="/ideas/{{ $idea->id }}">
+    <div><a href="{{ route('ideas.index') }}">TOPページに戻る</a></div>
+    <form method="POST" action="{{ route('ideas.destroy', $idea['id']) }}">
         @csrf
         @method('DELETE')
         <button type="submit">この命名を削除する</button>
@@ -32,7 +32,7 @@
         </ul>
     </div>
     @endif
-    <form method="POST" action="/ideas/{{ $idea->id }}">
+    <form method="POST" action="{{ route('ideas.update', $idea['id']) }}">
         @csrf
         @method('PUT')
         <label for="main_category">メインカテゴリー:</label>

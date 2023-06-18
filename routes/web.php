@@ -14,9 +14,4 @@ use App\Http\Controllers\IdeaController;
 |
 */
 
-Route::get('/ideas', [IdeaController::class, 'index']);
-Route::get('/ideas/create', [IdeaController::class, 'create']);
-Route::post('/ideas', [IdeaController::class, 'store']);
-Route::get('/ideas/{idea}/edit', [IdeaController::class, 'edit']);
-Route::put('/ideas/{idea}', [IdeaController::class, 'update']);
-Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy']);
+Route::resource('ideas', IdeaController::class);

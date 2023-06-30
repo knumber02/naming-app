@@ -11,6 +11,7 @@
 <body>
     <h1>TOPページです</h1>
     <div><a href="{{ route('ideas.create') }}">命名を開始する</a></div>
+    <div><a href="{{ route('profile.edit') }}">プロフィールを編集する</a></div>
     @if (session('message'))
     <p class="alert alert-success">
         {{ session('message') }}
@@ -21,6 +22,10 @@
         <li><a href="{{ route('ideas.edit', $idea['id']) }}">番号:{{$idea["id"]}},メインカテゴリー:{{$idea["main_category"]}}</a></li>
         @endforeach
     </ul>
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit">ログアウトする</button>
+    </form>
 </body>
 
 </html>

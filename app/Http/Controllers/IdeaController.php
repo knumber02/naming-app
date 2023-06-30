@@ -11,7 +11,7 @@ class IdeaController extends Controller
 {
     public function index()
     {
-        $ideas = Idea::all();
+        $ideas = auth()->user()->ideas; // ログインユーザーのアイデアだけを取得
         return view('ideas.index', compact('ideas'));
     }
 
@@ -24,7 +24,7 @@ class IdeaController extends Controller
     {
         $validated = $request->validated();
         $idea = new Idea();
-        $idea->user_id = 1; //ログイン機能実装まで仮に値を設定
+        $idea->user_id = auth()->id();
         $idea->fill($request->all());
         $idea->save();
 
